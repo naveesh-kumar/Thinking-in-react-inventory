@@ -1,40 +1,67 @@
 {
   "products": [
     {
+      "id": 1,
       "category": "Sporting Goods",
       "price": "$49.99",
       "stocked": true,
       "name": "Football"
     },
     {
+      "id": 2,
       "category": "Sporting Goods",
       "price": "$9.99",
       "stocked": true,
       "name": "Baseball"
     },
     {
+      "id": 3,
       "category": "Sporting Goods",
       "price": "$29.99",
       "stocked": false,
       "name": "Basketball"
     },
     {
+      "id": 4,
       "category": "Electronics",
       "price": "$99.99",
       "stocked": true,
       "name": "iPod Touch"
     },
     {
+      "id": 5,
       "category": "Electronics",
       "price": "$399.99",
       "stocked": false,
       "name": "iPhone 5"
     },
     {
+      "id": 6,
       "category": "Electronics",
       "price": "$199.99",
       "stocked": true,
       "name": "Nexus 7"
+    },
+    {
+      "category": "Petroleum",
+      "price": "$25",
+      "stocked": "true",
+      "name": "Kerosene",
+      "id": 7
+    },
+    {
+      "category": "Jewellery",
+      "price": "$25",
+      "stocked": "true",
+      "name": "Long Chain",
+      "id": 8
+    },
+    {
+      "category": "Skin",
+      "price": "$100",
+      "stocked": "false",
+      "name": "Cream",
+      "id": 9
     }
   ]
 }

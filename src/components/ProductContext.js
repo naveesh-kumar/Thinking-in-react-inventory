@@ -20,6 +20,8 @@ export function ProductContext(props) {
   };
 
   return (
-    <productCtx.Provider value={products}>{props.children}</productCtx.Provider>
+    <productCtx.Provider value={{ products, setProducts }}>
+      {props.children}
+    </productCtx.Provider>
   );
 }

@@ -5,8 +5,7 @@ import Message from "./Message";
 import { productCtx } from "./ProductContext";
 
 export default function FilterableProductTable() {
-
-  const products = useContext(productCtx);
+  const {products} = useContext(productCtx);
   const [category, setCategory] = useState("");
   const [categoryProducts, setCategoryProducts] = useState([]);
 
@@ -16,21 +15,21 @@ export default function FilterableProductTable() {
     const filteredProducts =
       searchCategory === "All Products"
         ? products
-        : categoryBasedProducts(searchCategory);
+        : categoryBasedProducts()[searchCategory];
 
     stocked
       ? setCategoryProducts(showOnlyInStockProducts(filteredProducts))
       : setCategoryProducts(filteredProducts);
   };
 
-  const categoryBasedProducts = (category) => {
+  const categoryBasedProducts = () => {
     const categoryBasedProducts = products.reduce((acc, cv) => {
       acc[cv["category"]] = acc[cv["category"]] || [];
       acc[cv["category"]].push(cv);
       return acc;
     }, {});
 
-    return categoryBasedProducts[category];
+    return categoryBasedProducts;
   };
 
   const showOnlyInStockProducts = (products) => {
@@ -38,11 +37,12 @@ export default function FilterableProductTable() {
   };
 
   return (
-    <div className="container w-50">
+    <div className="container w-50 my-2">
       <SearchBar
         categorySearch={(searchCategory, stocked) =>
           categorySearch(searchCategory, stocked)
         }
+        categoryBasedProducts={categoryBasedProducts()}
       />
       {category ? (
         <ProductTable products={categoryProducts} category={category} />
