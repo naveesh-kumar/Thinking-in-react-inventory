@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import InventoryForm from "./InventoryForm";
+import InventoryForm from "../components/InventoryForm";
 import { productCtx } from "../components/ProductContext";
 
 function AddInventory() {
   const history = useHistory();
   const { products, setProducts } = useContext(productCtx);
-  const [updatedProduct, setUpdatedProduct] = useState(products);
 
   const addProduct = (product) => {
     const requestOptions = {
@@ -21,8 +20,7 @@ function AddInventory() {
     fetch("http://localhost:5000/products", options)
       .then((response) => response.json())
       .then((data) => {
-        setUpdatedProduct(updatedProduct.push(data));
-        setProducts(updatedProduct);
+        setProducts([...products, data]);
         history.push("/");
       })
       .catch((err) => {

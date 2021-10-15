@@ -16,6 +16,11 @@ function Navbar() {
                   Add Inventory
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/manage-inventory">
+                  Manage Inventory
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
