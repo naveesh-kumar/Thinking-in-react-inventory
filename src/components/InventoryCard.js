@@ -6,6 +6,7 @@ function InventoryCard({
   setPrice,
   setStock,
   onUpdateChangesClick,
+  onDeleteButtonClick
 }) {
   const titleInputRef = useRef();
   const priceInputRef = useRef();
@@ -22,6 +23,13 @@ function InventoryCard({
       <div className="card text-center" style={{ width: "250px" }}>
         <div className="card-body">
           <h5 className="card-title">{product.category}</h5>
+          <span
+            className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger"
+            style={{ cursor: "pointer" }}
+            onClick={()=>{onDeleteButtonClick(product.id)}}
+          >
+            X
+          </span>
         </div>
         <ul className="list-group">
           <li className="list-group-item">Product title</li>

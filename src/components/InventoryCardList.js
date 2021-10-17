@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InventoryCard from "./InventoryCard";
 
-function InventoryCardList({ products, updateInventory }) {
+function InventoryCardList({ products, updateInventory, updateInventoryByDeletingProduct }) {
   const [title, setTitle] = useState();
   const [price, setPrice] = useState();
   const [stock, setStock] = useState();
@@ -15,8 +15,12 @@ function InventoryCardList({ products, updateInventory }) {
       });
   };
 
+  const onDeleteButtonClick = (productId) => {
+    updateInventoryByDeletingProduct(productId);
+  }
+
   return (
-    <div className="container mt-5">
+    <div className="mt-5">
       <div className="d-flex flex-row flex-wrap justify-content-between">
         {products.map((product) => (
           <InventoryCard
@@ -27,6 +31,9 @@ function InventoryCardList({ products, updateInventory }) {
             setStock={setStock}
             onUpdateChangesClick={() => {
               onUpdateChangesClick(product);
+            }}
+            onDeleteButtonClick={(productId) => {
+              onDeleteButtonClick(productId)
             }}
           />
         ))}

@@ -1,51 +1,33 @@
-import React, { useState, useContext } from "react";
-import SearchBar from "./SearchBar";
-import ProductTable from "./ProductTable";
+import React, { useContext, useState } from "react";
+import categoryBasedProducts from "../utilities/categoryBasedProducts";
+import InStock from "./InStock";
 import Message from "./Message";
 import { productCtx } from "./ProductContext";
+import ProductTable from "./ProductTable";
+import SearchBar from "./SearchBar";
 
 export default function FilterableProductTable() {
-  const {products} = useContext(productCtx);
+  const { products } = useContext(productCtx);
+  const [stock, setStock] = useState();
   const [category, setCategory] = useState("");
-  const [categoryProducts, setCategoryProducts] = useState([]);
 
-  const categorySearch = (searchCategory, stocked) => {
-    setCategory(searchCategory);
+  const { categoryBasedProductsList, inStockProducts, allProducts } =
+    categoryBasedProducts(products);
+  const categoryProducts = categoryBasedProductsList();
 
-    const filteredProducts =
-      searchCategory === "All Products"
-        ? products
-        : categoryBasedProducts()[searchCategory];
-
-    stocked
-      ? setCategoryProducts(showOnlyInStockProducts(filteredProducts))
-      : setCategoryProducts(filteredProducts);
-  };
-
-  const categoryBasedProducts = () => {
-    const categoryBasedProducts = products.reduce((acc, cv) => {
-      acc[cv["category"]] = acc[cv["category"]] || [];
-      acc[cv["category"]].push(cv);
-      return acc;
-    }, {});
-
-    return categoryBasedProducts;
-  };
-
-  const showOnlyInStockProducts = (products) => {
-    return products.filter((product) => product.stocked);
-  };
+  const filteredProducts = stock
+    ? inStockProducts(categoryProducts[category])
+    : allProducts(categoryProducts[category]);
 
   return (
     <div className="container w-50 my-2">
       <SearchBar
-        categorySearch={(searchCategory, stocked) =>
-          categorySearch(searchCategory, stocked)
-        }
-        categoryBasedProducts={categoryBasedProducts()}
+        categoryList={Object.keys(categoryProducts)}
+        setCategory={setCategory}
       />
+      <InStock setStock={setStock} />
       {category ? (
-        <ProductTable products={categoryProducts} category={category} />
+        <ProductTable products={filteredProducts} category={category} />
       ) : (
         <Message />
       )}

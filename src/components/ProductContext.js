@@ -1,23 +1,21 @@
 import React, { createContext, useState, useEffect } from "react";
+import request from "../services/request";
 
 export const productCtx = createContext([]);
 
 export function ProductContext(props) {
   const [products, setProducts] = useState([]);
+  const { handleGetRequest } = request();
 
   useEffect(() => {
     async function fetchData() {
-      const products = await getProducts();
-      setProducts(products);
+      const latestProducts = await handleGetRequest();
+      if (latestProducts) {
+        setProducts(latestProducts);
+      }
     }
-    fetchData();
+   fetchData();
   }, []);
-
-  const getProducts = async () => {
-    const products = await fetch("http://localhost:5000/products");
-    const productsJson = await products.json();
-    return productsJson;
-  };
 
   return (
     <productCtx.Provider value={{ products, setProducts }}>

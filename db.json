@@ -5,35 +5,28 @@
       "category": "Sporting Goods",
       "price": "$49.99",
       "stocked": "true",
-      "name": "Football"
-    },
-    {
-      "id": 2,
-      "category": "Sporting Goods",
-      "price": "$9.99",
-      "stocked": "true",
-      "name": "Baseball"
+      "name": "Foot ball"
     },
     {
       "id": 3,
       "category": "Sporting Goods",
       "price": "$29.9",
-      "stocked": "true",
+      "stocked": "false",
       "name": "Basket ball"
     },
     {
       "id": 4,
       "category": "Electronics",
-      "price": "$99.99",
+      "price": "$100",
       "stocked": "true",
       "name": "iPod Touch"
     },
     {
       "id": 5,
       "category": "Electronics",
-      "price": "$399.99",
-      "stocked": "true",
-      "name": "iPhone 15"
+      "price": "$100",
+      "stocked": "false",
+      "name": "iPhone 11"
     },
     {
       "id": 6,
@@ -50,32 +43,25 @@
       "id": 7
     },
     {
-      "category": "Jewellery",
-      "price": "$30",
-      "stocked": "true",
-      "name": "Long Chain",
+      "category": "Petroleum",
+      "price": "$200",
+      "stocked": "false",
+      "name": "Diesel",
       "id": 8
     },
     {
-      "category": "Skin",
-      "price": "$100",
-      "stocked": "false",
-      "name": "Cream",
+      "category": "Electronics",
+      "price": "$200",
+      "stocked": "true",
+      "name": "Samsung M31s",
       "id": 9
     },
     {
-      "category": "Skin",
-      "price": "$12",
+      "category": "Jewellery",
+      "price": "$34",
       "stocked": "true",
-      "name": "Shampoo",
+      "name": "anklet",
       "id": 10
-    },
-    {
-      "category": "Petroleum",
-      "price": "$500",
-      "stocked": "false",
-      "name": "diesel",
-      "id": 11
     }
   ]
 }
